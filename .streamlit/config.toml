@@ -1,0 +1,7 @@
+[theme]
+base = "light"
+primaryColor = "#96DFE5"             # ação/acento
+backgroundColor = "#FFFFFF"          # fundo principal
+secondaryBackgroundColor = "#F3FBFC" # cartões/sidebars (tom claro)
+textColor = "#15252D"                # texto
+font = "sans serif"
