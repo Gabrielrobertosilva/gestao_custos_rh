@@ -1,4 +1,4 @@
-# app.py — Home com botões estilizados e navegação direta
+# app.py — Home com 3 cards, botões estilizados e navegação direta
 import streamlit as st
 from shared.ui import add_brand_style, render_footer, PALETTE
 
@@ -58,7 +58,7 @@ st.markdown(
         font-size: 0.9rem;
       }}
 
-      /* Estiliza os botões nativos do Streamlit */
+      /* Estilo dos botões nativos do Streamlit (mantém navegação direta) */
       .stButton > button {{
         width: 100%;
         background-color: #96DFE5 !important;
@@ -88,8 +88,8 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-# ======== CARDS + BOTÕES (navegação direta) ========
-col1, col2 = st.columns(2, gap="large")
+# ======== CARDS + BOTÕES (3 itens) ========
+col1, col2, col3 = st.columns(3, gap="large")
 
 with col1:
     st.markdown(
@@ -97,12 +97,12 @@ with col1:
         <div class="card">
           <div class="pill">PLR</div>
           <h3>Calculadora de PLR</h3>
-          <p>Antecipação 2025 com caput e parágrafos, teto global/individual e adicional proporcional. Importação de base e export em Excel.</p>
+          <p>Antecipação 2025 com caput/§§, teto global/individual e adicional proporcional. Importação de base e exportação em Excel.</p>
         </div>
         """,
         unsafe_allow_html=True
     )
-    st.markdown("<div style='height: 1rem;'></div>", unsafe_allow_html=True)  # espaço
+    st.markdown("<div style='height: 1rem;'></div>", unsafe_allow_html=True)
     if st.button("📊 Abrir Calculadora de PLR", use_container_width=True, key="btn_plr"):
         st.switch_page("pages/1_📊_Calculadora_de_PLR.py")
 
@@ -112,14 +112,29 @@ with col2:
         <div class="card">
           <div class="pill">Custos</div>
           <h3>Calculadora de Custos</h3>
-          <p>Custo mensal e anual por colaborador: salário, 13º, férias, PLR mensalizada, benefícios e encargos. Inclui gráfico e exportação.</p>
+          <p>Custo mensal e anual por colaborador: salário, 13º, férias, PLR mensalizada, benefícios e encargos. Gráfico e export.</p>
         </div>
         """,
         unsafe_allow_html=True
     )
-    st.markdown("<div style='height: 1rem;'></div>", unsafe_allow_html=True)  # espaço
+    st.markdown("<div style='height: 1rem;'></div>", unsafe_allow_html=True)
     if st.button("💸 Abrir Calculadora de Custos", use_container_width=True, key="btn_custos"):
         st.switch_page("pages/2_💸_Calculadora_de_Custos.py")
 
+with col3:
+    st.markdown(
+        """
+        <div class="card">
+          <div class="pill">Total Cash</div>
+          <h3>Total Cash do Colaborador</h3>
+          <p>Compare duas propostas (A vs B): fixo, 13º, 1/3 férias, PLR/bonus, benefícios anualizados, prêmios e ações/RSUs.</p>
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
+    st.markdown("<div style='height: 1rem;'></div>", unsafe_allow_html=True)
+    if st.button("💼 Abrir Total Cash", use_container_width=True, key="btn_totalcash"):
+        st.switch_page("pages/3_💼_Total_Cash.py")
+
 # ======== RODAPÉ ========
-render_footer("People Analytics - Gestão & Custos", "v2.5")
+render_footer("People Analytics - Gestão & Custos", "v3.0")
