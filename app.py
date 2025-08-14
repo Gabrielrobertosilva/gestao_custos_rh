@@ -1,4 +1,4 @@
-# app.py — Home refinada com cards, botões alinhados e espaçamento
+# app.py — Home refinada com botões estilizados
 import streamlit as st
 from shared.ui import add_brand_style, render_footer, PALETTE
 
@@ -57,6 +57,25 @@ st.markdown(
         padding: 4px 12px;
         font-size: 0.9rem;
       }}
+
+      /* Botão customizado */
+      .custom-btn {{
+        display: block;
+        width: 100%;
+        padding: 0.6rem;
+        text-align: center;
+        background-color: #96DFE5;
+        color: #15252D;
+        font-weight: 600;
+        border-radius: 8px;
+        border: none;
+        cursor: pointer;
+        transition: background-color 0.2s ease;
+        text-decoration: none;
+      }}
+      .custom-btn:hover {{
+        background-color: #7CD2D9;
+      }}
     </style>
     """,
     unsafe_allow_html=True
@@ -88,9 +107,11 @@ with col1:
         """,
         unsafe_allow_html=True
     )
-    st.markdown("<div style='height: 0.5rem;'></div>", unsafe_allow_html=True)  # espaço
-    if st.button("📊 Abrir Calculadora de PLR", use_container_width=True, key="btn_plr"):
-        st.switch_page("pages/1_📊_Calculadora_de_PLR.py")
+    st.markdown("<div style='height: 1rem;'></div>", unsafe_allow_html=True)  # espaço
+    st.markdown(
+        "<a class='custom-btn' href='pages/1_📊_Calculadora_de_PLR.py'>📊 Abrir Calculadora de PLR</a>",
+        unsafe_allow_html=True
+    )
 
 with col2:
     st.markdown(
@@ -103,9 +124,11 @@ with col2:
         """,
         unsafe_allow_html=True
     )
-    st.markdown("<div style='height: 0.5rem;'></div>", unsafe_allow_html=True)  # espaço
-    if st.button("💸 Abrir Calculadora de Custos", use_container_width=True, key="btn_custos"):
-        st.switch_page("pages/2_💸_Calculadora_de_Custos.py")
+    st.markdown("<div style='height: 1rem;'></div>", unsafe_allow_html=True)  # espaço
+    st.markdown(
+        "<a class='custom-btn' href='pages/2_💸_Calculadora_de_Custos.py'>💸 Abrir Calculadora de Custos</a>",
+        unsafe_allow_html=True
+    )
 
 # ======== RODAPÉ ========
-render_footer("People Analytics - Gestão & Custos", "v2.3")
+render_footer("People Analytics - Gestão & Custos", "v2.4")
