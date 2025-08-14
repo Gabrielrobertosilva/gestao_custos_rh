@@ -97,7 +97,7 @@ with col1:
         <div class="card">
           <div class="pill">PLR</div>
           <h3>Calculadora de PLR</h3>
-          <p>Antecipação 2025 com caput/§§, teto global/individual e adicional proporcional. Importação de base e exportação em Excel.</p>
+          <p>Antecipação 2025 de acordo com as Diretrizes da CCT e adicional proporcional.</p>
         </div>
         """,
         unsafe_allow_html=True
@@ -112,7 +112,7 @@ with col2:
         <div class="card">
           <div class="pill">Custos</div>
           <h3>Calculadora de Custos</h3>
-          <p>Custo mensal e anual por colaborador: salário, 13º, férias, PLR mensalizada, benefícios e encargos. Gráfico e export.</p>
+          <p>Custo mensal e anual por colaborador: salário, 13º, férias, PLR mensalizada, benefícios e encargos.</p>
         </div>
         """,
         unsafe_allow_html=True
@@ -126,8 +126,8 @@ with col3:
         """
         <div class="card">
           <div class="pill">Total Cash</div>
-          <h3>Total Cash do Colaborador</h3>
-          <p>Compare duas propostas (A vs B): fixo, 13º, 1/3 férias, PLR/bonus, benefícios anualizados, prêmios e ações/RSUs.</p>
+          <h3>Total Cash/Visão Colaborador</h3>
+          <p>Compare duas propostas (A vs B): fixo, 13º, 1/3 férias, PLR/bonus, benefícios anualizados, prêmios etc..</p>
         </div>
         """,
         unsafe_allow_html=True
