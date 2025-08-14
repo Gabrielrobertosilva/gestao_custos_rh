@@ -1,11 +1,11 @@
-# app.py — Home refinada com cards e botões alinhados
+# app.py — Home refinada com cards, botões alinhados e espaçamento
 import streamlit as st
 from shared.ui import add_brand_style, render_footer, PALETTE
 
 st.set_page_config(page_title="People Analytics - Gestão & Custos", layout="wide")
 add_brand_style()
 
-# ======== FUNDO (use sua imagem) ========
+# ======== FUNDO ========
 BG_URL = "https://cdn.prod.website-files.com/65172cb208ef8ecb7765b47f/657071ee0f5e2868cd0c9228_Ouribank-credito-e-garantias-open-graph-p-800.webp"
 
 st.markdown(
@@ -40,7 +40,7 @@ st.markdown(
         border: 1px solid rgba(150,223,229,0.45);
         transition: transform .15s ease, box-shadow .15s ease;
         box-shadow: 0 4px 14px rgba(0,0,0,0.08);
-        min-height: 170px; /* ajuda a alinhar alturas */
+        min-height: 170px;
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
@@ -74,7 +74,7 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-# ======== CARDS + BOTÕES ALINHADOS ========
+# ======== CARDS + BOTÕES ========
 col1, col2 = st.columns(2, gap="large")
 
 with col1:
@@ -88,6 +88,7 @@ with col1:
         """,
         unsafe_allow_html=True
     )
+    st.markdown("<div style='height: 0.5rem;'></div>", unsafe_allow_html=True)  # espaço
     if st.button("📊 Abrir Calculadora de PLR", use_container_width=True, key="btn_plr"):
         st.switch_page("pages/1_📊_Calculadora_de_PLR.py")
 
@@ -102,6 +103,7 @@ with col2:
         """,
         unsafe_allow_html=True
     )
+    st.markdown("<div style='height: 0.5rem;'></div>", unsafe_allow_html=True)  # espaço
     if st.button("💸 Abrir Calculadora de Custos", use_container_width=True, key="btn_custos"):
         st.switch_page("pages/2_💸_Calculadora_de_Custos.py")
 
