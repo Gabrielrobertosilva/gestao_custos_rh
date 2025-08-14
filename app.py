@@ -1,11 +1,11 @@
-# app.py — Home refinada (People Analytics - Gestão & Custos)
+# app.py — Home refinada com cards e botões alinhados
 import streamlit as st
 from shared.ui import add_brand_style, render_footer, PALETTE
 
 st.set_page_config(page_title="People Analytics - Gestão & Custos", layout="wide")
 add_brand_style()
 
-# Imagem de fundo
+# ======== FUNDO (use sua imagem) ========
 BG_URL = "https://cdn.prod.website-files.com/65172cb208ef8ecb7765b47f/657071ee0f5e2868cd0c9228_Ouribank-credito-e-garantias-open-graph-p-800.webp"
 
 st.markdown(
@@ -32,14 +32,7 @@ st.markdown(
       .hero h1 {{ color: #FFFFFF; font-size: 2.6rem; margin-bottom: 0.3rem; }}
       .hero p {{ color: #FFFFFF; font-size: 1.05rem; opacity: 0.85; margin: 0; }}
 
-      .cards {{
-        max-width: 1100px;
-        margin: 0 auto;
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 18px;
-        margin-bottom: 1rem;
-      }}
+      /* Cartão */
       .card {{
         background: #FFFFFF;
         border-radius: 16px;
@@ -47,6 +40,10 @@ st.markdown(
         border: 1px solid rgba(150,223,229,0.45);
         transition: transform .15s ease, box-shadow .15s ease;
         box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+        min-height: 170px; /* ajuda a alinhar alturas */
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
       }}
       .card:hover {{ transform: translateY(-2px); box-shadow: 0 10px 28px rgba(0,0,0,0.12); }}
       .card h3 {{ margin: 6px 0 6px 0; color: {PALETTE["ink"]}; font-size: 1.2rem; }}
@@ -65,7 +62,7 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-# Conteúdo principal
+# ======== HERO ========
 st.markdown(
     """
     <div class="hero">
@@ -77,32 +74,36 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-# Cards visuais
-st.markdown(
-    """
-    <div class="cards">
-      <div class="card">
-        <div class="pill">PLR</div>
-        <h3>Calculadora de PLR</h3>
-        <p>Antecipação 2025 com regras caput/§§, teto global e individual, adicional proporcional. Exporta em Excel.</p>
-      </div>
-      <div class="card">
-        <div class="pill">Custos</div>
-        <h3>Calculadora de Custos</h3>
-        <p>Custo mensal e anual por colaborador: salário, benefícios, PLR, encargos e mais. Inclui gráfico e exportação.</p>
-      </div>
-    </div>
-    """,
-    unsafe_allow_html=True
-)
+# ======== CARDS + BOTÕES ALINHADOS ========
+col1, col2 = st.columns(2, gap="large")
 
-# Navegação com os botões logo abaixo, alinhados com os cards
-c1, c2 = st.columns([1, 1], gap="large")
-with c1:
-    if st.button("📊 Abrir Calculadora de PLR", use_container_width=True):
+with col1:
+    st.markdown(
+        """
+        <div class="card">
+          <div class="pill">PLR</div>
+          <h3>Calculadora de PLR</h3>
+          <p>Antecipação 2025 com caput e parágrafos, teto global/individual e adicional proporcional. Importação de base e export em Excel.</p>
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
+    if st.button("📊 Abrir Calculadora de PLR", use_container_width=True, key="btn_plr"):
         st.switch_page("pages/1_📊_Calculadora_de_PLR.py")
-with c2:
-    if st.button("💸 Abrir Calculadora de Custos", use_container_width=True):
+
+with col2:
+    st.markdown(
+        """
+        <div class="card">
+          <div class="pill">Custos</div>
+          <h3>Calculadora de Custos</h3>
+          <p>Custo mensal e anual por colaborador: salário, 13º, férias, PLR mensalizada, benefícios e encargos. Inclui gráfico e exportação.</p>
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
+    if st.button("💸 Abrir Calculadora de Custos", use_container_width=True, key="btn_custos"):
         st.switch_page("pages/2_💸_Calculadora_de_Custos.py")
 
+# ======== RODAPÉ ========
 render_footer("People Analytics - Gestão & Custos", "v2.3")
